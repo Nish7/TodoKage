@@ -2,7 +2,7 @@ import Router from '@/middlewares/index';
 const router = Router();
 
 /**
- * @route api/todo/[id]
+ * @route {GET} api/todo/[id]
  * @desc get todo by id
  * @access Public
  */
@@ -13,9 +13,9 @@ router.get(async (req, res, next) => {
 });
 
 /**
- * @route api/todo/[id]
- * @desc get todo by id
- * @access Public
+ * @route {PUT} api/todo/[id]
+ * @desc Edit a Todo
+ * @access Private
  */
 router.put(async (req, res, next) => {
 	const { id } = req.query;
@@ -24,9 +24,9 @@ router.put(async (req, res, next) => {
 });
 
 /**
- * @route api/todo/[id]
- * @desc get todo by id
- * @access Public
+ * @route {DELETE} api/todo/[id]
+ * @desc delete todo by id
+ * @access Private
  */
 router.delete(async (req, res, next) => {
 	const { id } = req.query;

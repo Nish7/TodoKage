@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import useSWR from 'swr';
+import { VStack, Text, Button } from '@chakra-ui/react';
+import { useSession } from 'next-auth/client';
 
-import { VStack, Text } from '@chakra-ui/react';
-
-function Loading() {
-	return <h1>Loading</h1>;
-}
+import { addTodo } from '@/actions/todos';
 
 export default function Home() {
-	const { data, error: serverError, isValidating } = useSWR('/api/todo');
+	const { data, error, isValidating } = useSWR('/api/todo');
 	const todos = data?.data;
+
+	const [session, loading] = useSession();
 
 	return (
 		<>
@@ -23,7 +23,13 @@ export default function Home() {
 						Welcome to TodoKage
 					</Text>
 
-					{isValidating ? <Loading /> : <Text> {todos} </Text>}
+					<Text>{todos}</Text>
+
+					<Text textStyle='h1'>API Testing</Text>
+
+					{session && !loading ? (
+						<Button onClick={addTodo}>Add Todo</Button>
+					) : null}
 				</VStack>
 			</main>
 		</>

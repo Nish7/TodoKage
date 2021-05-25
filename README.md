@@ -39,14 +39,22 @@
 - [x] Components [ Testing purposes ]
   - [x] Home/Index
   - [x] Navbar
-    ...
 
-API Routes
-
-1. Get -- /api/todo --> get all todos
-2. POST --> /api/todo/[id] --> add/edit a todo 
-3. Get a todo --> /api/todo/[id] --> get a todo
-4. delete a todo --> /api/todo/[id] --> delete a todo
+### Backend
+#### Database Modelling
+- [x] Figure out, the DS of the todos in db and how it will be queried and mutated.
+  - [x] [Subdocuments - MongoDB](https://mongoosejs.com/docs/subdocs.html)
+#### API Routes 
+- [ ] Users
+  - [ ] POST create a user - Public
+  - [ ] GET users by id - Private
+  - [ ] PUT edit a user - Private
+  - [ ] Delete edit a user - Private
+- [ ] Todos
+  - [ ] GET all todos of user by user_id - Private
+  - [ ] POST add a todo using user_id - Private
+  - [ ] PUT edit a todo using todo_id - Private
+  - [ ] Delete delete a todo using todo_id - Private
 
 # 
 
