@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import useSWR from 'swr';
-import { VStack, Text, Button } from '@chakra-ui/react';
+import { Heading, Text, Button, Flex, VStack } from '@chakra-ui/react';
 import { useSession } from 'next-auth/client';
 
 import { addTodo } from '@/actions/todos';
+import { deleteUser } from '@/actions/users';
+import { api } from '@/utils/fetcher';
 
 export default function Home() {
 	const { data, error, isValidating } = useSWR('/api/todo');
@@ -17,21 +19,30 @@ export default function Home() {
 				<title>TodoKage</title>
 			</Head>
 
-			<main>
-				<VStack>
-					<Text textStyle='h1' as='h1'>
-						Welcome to TodoKage
-					</Text>
+			<Flex justifyContent='center' flexDirection='column' alignItems='center'>
+				<Heading as='h1'>Welcome to TodoKage</Heading>
 
-					<Text>{todos}</Text>
+				<Text>{todos}</Text>
 
-					<Text textStyle='h1'>API Testing</Text>
+				<Text textStyle='h1' my={5}>
+					API Testing
+				</Text>
 
-					{session && !loading ? (
-						<Button onClick={addTodo}>Add Todo</Button>
-					) : null}
-				</VStack>
-			</main>
+				{session ? (
+					<VStack>
+						<Button
+							isLoading={loading}
+							disabled={loading}
+							onClick={() => addTodo()}>
+							Add Todo
+						</Button>
+
+						<Button isLoading={loading} disabled={loading} onClick={deleteUser}>
+							Delete User
+						</Button>
+					</VStack>
+				) : null}
+			</Flex>
 		</>
 	);
 }

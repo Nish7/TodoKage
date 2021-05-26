@@ -1,3 +1,7 @@
 import axios from 'axios';
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-export default fetcher;
+
+export default function fetcher(url) {
+	return axios.get(url).then((res) => res.data);
+}
+
+export const api = axios.create({ baseURL: 'http://localhost:3000/api' });

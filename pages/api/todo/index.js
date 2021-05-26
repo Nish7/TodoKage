@@ -1,6 +1,5 @@
 import Router from '@/middlewares/index';
 import protect from '@/middlewares/protect';
-import User from '@/models/User';
 
 const router = Router();
 
@@ -10,7 +9,7 @@ const router = Router();
  * @access Public
  */
 router.get(async (req, res, next) => {
-	res.json({ data: 'Get all todos' });
+	res.status(200).json({ data: 'Get all todos' });
 });
 
 /**

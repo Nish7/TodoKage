@@ -15,7 +15,7 @@ const callbacks = { signIn, jwt, session };
 const pages = {
 	// signIn: '/auth/signin',
 	// signOut: '/auth/signout',
-	error: '/',
+	// error: '',
 	// verifyRequest: '/auth/verify-request',
 	// newUser: null,
 };
@@ -23,7 +23,6 @@ const pages = {
 export default NextAuth({
 	providers,
 	secret: process.env.AUTH_SECRET,
-	pages,
 	callbacks,
 	debug: false,
 });

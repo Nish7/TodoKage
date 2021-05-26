@@ -14,8 +14,6 @@
    1. Dark & Light modes
    2. Responsive   
 
-#
-
 ## Roadmap Todo:
 
 ### Setup :: Initial Commit
@@ -45,11 +43,10 @@
 - [x] Figure out, the DS of the todos in db and how it will be queried and mutated.
   - [x] [Subdocuments - MongoDB](https://mongoosejs.com/docs/subdocs.html)
 #### API Routes 
-- [ ] Users
-  - [ ] POST create a user - Public
-  - [ ] GET users by id - Private
-  - [ ] PUT edit a user - Private
-  - [ ] Delete edit a user - Private
+- [x] Users
+  - [x] POST create a user - Public
+  - [x] GET users by id - Public
+  - [x] Delete edit a user - Private
 - [ ] Todos
   - [ ] GET all todos of user by user_id - Private
   - [ ] POST add a todo using user_id - Private
