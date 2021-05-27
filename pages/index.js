@@ -4,8 +4,8 @@ import { Heading, Text, Button, Flex, VStack } from '@chakra-ui/react';
 import { useSession } from 'next-auth/client';
 
 import { addTodo } from '@/actions/todos';
-import { deleteUser } from '@/actions/users';
 import Todo from '@/components/todos/Todo';
+import DialogButton from '@/components/ui/Buttons/DeleteUserButton';
 
 const newTodo = {
 	task: 'Clean Dishes!',
@@ -16,6 +16,7 @@ export default function Home() {
 	const [session, loading] = useSession();
 
 	const { data, error, isValidating } = useSWR(session ? '/api/todo' : null);
+	console.log(data);
 	const todos = data?.todos || [];
 
 	return (
@@ -27,9 +28,9 @@ export default function Home() {
 			<Flex justifyContent='center' flexDirection='column' alignItems='center'>
 				<Heading as='h1'>Welcome to TodoKage</Heading>
 
-				<VStack my='5' spacing='4' w='25%'>
+				<VStack my='5' spacing='4' w={['90%', '90%', '30%']}>
 					{todos.map((todo, i) => (
-						<Todo {...todo} />
+						<Todo key={i} {...todo} />
 					))}
 				</VStack>
 
@@ -47,12 +48,7 @@ export default function Home() {
 								Add Todo
 							</Button>
 
-							<Button
-								isLoading={loading}
-								disabled={loading}
-								onClick={deleteUser}>
-								Delete User
-							</Button>
+							<DialogButton />
 						</VStack>
 					</>
 				) : null}

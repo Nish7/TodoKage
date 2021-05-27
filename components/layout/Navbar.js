@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut } from 'next-auth/client';
 import { Text, Button, Flex, Avatar } from '@chakra-ui/react';
 
-import ModeButton from '@/components/ui/ModeButton';
+import ModeButton from '@/components/ui/Buttons/ModeButton';
 
 function Navbar() {
 	const [session] = useSession();

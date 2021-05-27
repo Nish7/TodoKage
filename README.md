@@ -7,7 +7,7 @@
 1. SSR and SSG using NextJS
 2. Stored in persistent database (Mongo DB)
 3. Authenticated and private todos (NextAuth JS)
-   1. Google and Github Login 
+   1. Google and ~~Github Login~~
    2. Sessions using JWT tokens
 4. Data Fetching with SWR
 5. Beautifully styled with Chakra-ui   
@@ -50,10 +50,12 @@
 - [ ] Todos
   - [x] GET all todos of user by user_id - Private
   - [x] POST add a todo using user_id - Private
-  - [ ] PUT edit a todo using todo_id - Private
-  - [ ] Delete delete a todo using todo_id - Private
+  - [x] PUT edit a todo using todo_id - Private
+  - [x] Delete delete a todo using todo_id - Private
 
 # 
+
+
 
 ## Design Inspiration
 
