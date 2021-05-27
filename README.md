@@ -48,8 +48,8 @@
   - [x] GET users by id - Public
   - [x] Delete edit a user - Private
 - [ ] Todos
-  - [ ] GET all todos of user by user_id - Private
-  - [ ] POST add a todo using user_id - Private
+  - [x] GET all todos of user by user_id - Private
+  - [x] POST add a todo using user_id - Private
   - [ ] PUT edit a todo using todo_id - Private
   - [ ] Delete delete a todo using todo_id - Private
 

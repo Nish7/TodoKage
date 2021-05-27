@@ -1,9 +1,15 @@
 import { api } from '@/utils/fetcher';
 import { mutate } from 'swr';
-import asyncHandler from '@/utils/asyncHandler';
 
-export const addTodo = asyncHandler(async () => {
-	const response = await api.post('/todo');
-	console.log(response.data.session);
-	mutate('/api/todo');
-});
+export const addTodo = async (newTodo) => {
+	try {
+		const response = await api.post('/todo', {
+			body: JSON.stringify(newTodo),
+		});
+
+		console.log(response.data.todos);
+		mutate('/api/todo');
+	} catch (err) {
+		console.log(err);
+	}
+};

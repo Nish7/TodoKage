@@ -5,13 +5,18 @@ import { useSession } from 'next-auth/client';
 
 import { addTodo } from '@/actions/todos';
 import { deleteUser } from '@/actions/users';
-import { api } from '@/utils/fetcher';
+import Todo from '@/components/todos/Todo';
+
+const newTodo = {
+	task: 'Clean Dishes!',
+	tags: ['Chores', 'Boring'],
+};
 
 export default function Home() {
-	const { data, error, isValidating } = useSWR('/api/todo');
-	const todos = data?.data;
-
 	const [session, loading] = useSession();
+
+	const { data, error, isValidating } = useSWR(session ? '/api/todo' : null);
+	const todos = data?.todos || [];
 
 	return (
 		<>
@@ -22,25 +27,34 @@ export default function Home() {
 			<Flex justifyContent='center' flexDirection='column' alignItems='center'>
 				<Heading as='h1'>Welcome to TodoKage</Heading>
 
-				<Text>{todos}</Text>
-
-				<Text textStyle='h1' my={5}>
-					API Testing
-				</Text>
+				<VStack my='5' spacing='4' w='25%'>
+					{todos.map((todo, i) => (
+						<Todo {...todo} />
+					))}
+				</VStack>
 
 				{session ? (
-					<VStack>
-						<Button
-							isLoading={loading}
-							disabled={loading}
-							onClick={() => addTodo()}>
-							Add Todo
-						</Button>
+					<>
+						<Text textStyle='h1' my={5}>
+							API Testing
+						</Text>
 
-						<Button isLoading={loading} disabled={loading} onClick={deleteUser}>
-							Delete User
-						</Button>
-					</VStack>
+						<VStack>
+							<Button
+								isLoading={loading}
+								disabled={loading}
+								onClick={() => addTodo(newTodo)}>
+								Add Todo
+							</Button>
+
+							<Button
+								isLoading={loading}
+								disabled={loading}
+								onClick={deleteUser}>
+								Delete User
+							</Button>
+						</VStack>
+					</>
 				) : null}
 			</Flex>
 		</>

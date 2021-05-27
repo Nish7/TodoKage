@@ -7,7 +7,7 @@ const TodoSchema = new Schema({
 	},
 	date: {
 		type: Date,
-		default: new Date(),
+		default: Date.now,
 	},
 	tags: {
 		type: [String],
@@ -17,7 +17,7 @@ const TodoSchema = new Schema({
 const UserSchema = new Schema({
 	name: String,
 	googleId: Number,
-	date: { type: Date, default: new Date() },
+	date: { type: Date, default: Date.now },
 	email: String,
 	picture: String,
 	todos: {

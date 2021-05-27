@@ -13,6 +13,7 @@
 		"@emotion/react": "^11",
 		"@emotion/styled": "^11",
 		"axios": "^0.21.1",
+		"date-fns": "^2.21.3",
 		"framer-motion": "^4",
 		"mongodb": "^3.6.7",
 		"mongoose": "^5.12.10",

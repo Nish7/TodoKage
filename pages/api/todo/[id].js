@@ -1,37 +1,38 @@
 import Router from '@/middlewares/index';
 const router = Router();
 
-/**
- * @route {GET} api/todo/[id]
- * @desc get todo by id
- * @access Public
- */
-router.get(async (req, res, next) => {
-	const { id } = req.query;
+import User from '@/models/User';
+import protect from '@/middlewares/protect';
+import asyncHandler from '@/utils/asyncHandler';
 
-	res.json({ data: `Get todo by ${ids}` });
-});
 
 /**
  * @route {PUT} api/todo/[id]
  * @desc Edit a Todo
  * @access Private
  */
-router.put(async (req, res, next) => {
-	const { id } = req.query;
-
-	res.json({ data: `put todo by ${id}` });
-});
+router.put(
+	protect,
+	asyncHandler(async (req, res, next) => {
+		const { id: googleId } = req.session.user;
+		const {name, email, }
+		const todos = await User.findOneAndUpdate({ googleId }, ).select('todos');
+		res.status(201).json({ todos });
+	}),
+);
 
 /**
  * @route {DELETE} api/todo/[id]
  * @desc delete todo by id
  * @access Private
  */
-router.delete(async (req, res, next) => {
-	const { id } = req.query;
+router.delete(
+	protect,
+	asyncHandler(async (req, res, next) => {
+		const { id } = req.query;
 
-	res.json({ data: `delete todo by ${id}` });
-});
+		res.json({ data: `delete todo by ${id}` });
+	}),
+);
 
 export default router;
