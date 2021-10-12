@@ -1,4 +1,6 @@
 # TodoKage
+Status: In Progress 🟡
+
 
 "Kage" of Todo Apps, a title bestowed generally regarded as the strongest Todo App in the realm of internet.
 
